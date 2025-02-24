@@ -20,7 +20,7 @@ covid_with_state_info <- covid %>%
 #4
 covid_processed <- covid_with_state_info %>%
   select(state, region, date, cases, deaths) %>%
-  mutate(date = as.Date(date))  # Convert 'date' column to Date type
+  mutate(date = as.Date(date))  
 head(covid_processed)
 
 #5
@@ -39,7 +39,7 @@ covid_combined <- bind_rows(covid_cases_long, covid_deaths_long)
 #6
 ggplot(covid_combined, aes(x = as.Date(date), y = value, color = metric)) +
   geom_line(linewidth = 1) +
-  facet_wrap(~region + metric, scales = "free_y", ncol = 4) +  # Facet by region and metric (Cases/Deaths)
+  facet_wrap(~region + metric, scales = "free_y", ncol = 4) +  
   labs(
     title = "Cumulative Cases and Deaths: Region",
     subtitle = "COVID-19 Data: NY-Times",
@@ -51,9 +51,9 @@ ggplot(covid_combined, aes(x = as.Date(date), y = value, color = metric)) +
   theme_minimal() +
   theme(
     axis.text.x = element_text(angle = 45, hjust = 1),
-    panel.grid.major = element_line(color = "gray", linewidth = 0.5),
+    panel.grid.major = element_line(color = "gray", linewidth = .75),
     panel.grid.minor = element_blank(),
-    strip.text = element_text(size = 12)  # Increase font size of facet labels
+    strip.text = element_text(size = 4)  
   )
 
 covid_processed_cleaned <- covid_processed %>%
@@ -73,7 +73,7 @@ covid_combined <- bind_rows(covid_cases_long, covid_deaths_long)
 
 ggplot(covid_combined, aes(x = as.Date(date), y = value, color = metric)) +
   geom_line(linewidth = 1) +
-  facet_wrap(~region + metric, scales = "free_y", ncol = 4) +  # Facet by region and metric (Cases/Deaths)
+  facet_wrap(~region + metric, scales = "free_y", ncol = 4) +  
   labs(
     title = "Cumulative Cases and Deaths: Region",
     subtitle = "COVID-19 Data: NY-Times",
@@ -85,8 +85,8 @@ ggplot(covid_combined, aes(x = as.Date(date), y = value, color = metric)) +
   theme_minimal() +
   theme(
     axis.text.x = element_text(angle = 45, hjust = 1),
-    panel.grid.major = element_line(color = "gray", linewidth = 0.5),
+    panel.grid.major = element_line(color = "gray", linewidth = .75),
     panel.grid.minor = element_blank(),
-    strip.text = element_text(size = 12)  # Increase font size of facet labels
+    strip.text = element_text(size = 4)  
   )
 
